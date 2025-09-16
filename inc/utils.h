@@ -6,14 +6,14 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:02 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/09/16 12:34:56 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/09/16 13:33:34 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
 # define UTILS_H
 
-# include <stddef.h>
+# include <sys/types.h>
 
 size_t	str_to_num(char *s);
 

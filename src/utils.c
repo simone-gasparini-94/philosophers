@@ -6,11 +6,12 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:35:35 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/09/16 12:40:23 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/09/16 13:35:03 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include <stdlib.h>
+#include <sys/types.h>
 
 size_t str_to_num(char *s)
 {
