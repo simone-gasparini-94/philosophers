@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:44:43 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/09/22 16:30:15 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/09/22 17:45:56 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 static void init_threads(t_data *data);
 static void	init_philo(t_data *data);
 
-void	init(t_data *data, char **argv)
+t_data	*init(char **argv)
 {
+	t_data *data;
+
 	data = malloc(sizeof(*data));
 	if (data == NULL)
 		exit (EXIT_FAILURE);
@@ -30,6 +32,7 @@ void	init(t_data *data, char **argv)
 	data->num_times_philo_must_eat = str_to_num(argv[5]);
 	init_threads(data);
 	init_philo(data);
+	return (data);
 }
 
 static void init_threads(t_data *data)

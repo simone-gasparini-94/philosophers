@@ -6,6 +6,8 @@ OBJ_DIR		=	build
 SRCS		=	args.c							\
 				init.c							\
 				main.c							\
+				routine.c						\
+				threads.c						\
 				utils.c							
 SRC_FILES	=	$(addprefix $(SRC_DIR)/, $(SRCS))
 OBJS		=	$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_FILES))

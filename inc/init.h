@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:30:53 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/09/16 13:34:16 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/09/22 17:46:31 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 typedef struct s_data t_data;
 
-void	init(t_data *data, char **argv);
+t_data	*init(char **argv);
 
 #endif

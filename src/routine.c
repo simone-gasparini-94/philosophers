@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/22 16:42:21 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/09/22 17:46:09 by sgaspari         ###   ########.fr       */
+/*   Created: 2025/09/22 17:34:34 by sgaspari          #+#    #+#             */
+/*   Updated: 2025/09/22 17:36:37 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include <pthread.h>
-#include "args.h"
+#include <sys/types.h>
 #include "data.h"
-#include "init.h"
-#include "threads.h"
 
-int	main(int argc, char *argv[])
+void	*routine(void *arg)
 {
-	t_data *data;
+	t_philo	*philo;
 
-	check_args(argc, argv);
-	data = init(argv);
-	create_threads(data);
-	join_threads(data);
-	return (0);
+	philo = (t_philo *)arg;
+	printf("Philosopher id is %zu\n", (size_t) philo->id);
+	return (NULL);
 }
