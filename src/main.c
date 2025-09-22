@@ -6,9 +6,10 @@
 
 int	main(int argc, char *argv[])
 {
-	t_data data;
+	t_data *data;
 
+	data = NULL;
 	check_args(argc, argv);
-	init(&data, argv);
+	init(data, argv);
 	return (0);
 }
