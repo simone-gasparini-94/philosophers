@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mutexes.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/22 16:42:21 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/09/23 17:45:34 by sgaspari         ###   ########.fr       */
+/*   Created: 2025/09/23 16:59:28 by sgaspari          #+#    #+#             */
+/*   Updated: 2025/09/23 17:45:55 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <pthread.h>
-#include "args.h"
 #include "data.h"
-#include "init.h"
-#include "mutexes.h"
-#include "threads.h"
 
-int	main(int argc, char *argv[])
+void	init_mutexes(t_data *data)
 {
-	t_data *data;
+	size_t	i;
 
-	check_args(argc, argv);
-	data = init(argv);
-	init_mutexes(data);
-	create_threads(data);
-	join_threads(data);
-	destroy_mutexes(data);
-	return (0);
+	i = 0;
+	while (i < data->num_philo)
+	{
+		pthread_mutex_init(&data->mutexes[i], NULL);
+		i++;
+	}
+}
+
+void	destroy_mutexes(t_data *data)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < data->num_philo)
+	{
+		pthread_mutex_destroy(&data->mutexes[i]);
+		i++;
+	}
 }

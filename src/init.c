@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:44:43 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/09/22 17:45:56 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/09/23 17:45:06 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "utils.h"
 
 static void init_threads(t_data *data);
+static void	init_mutexes(t_data *data);
 static void	init_philo(t_data *data);
 
 t_data	*init(char **argv)
@@ -31,6 +32,7 @@ t_data	*init(char **argv)
 	data->time_to_sleep_ms = str_to_num(argv[4]);
 	data->num_times_philo_must_eat = str_to_num(argv[5]);
 	init_threads(data);
+	init_mutexes(data);
 	init_philo(data);
 	return (data);
 }
@@ -46,6 +48,18 @@ static void init_threads(t_data *data)
 	}
 }
 
+static void	init_mutexes(t_data *data)
+{
+	data->mutexes = malloc(sizeof(pthread_mutex_t) * data->num_philo);
+	if (data->mutexes == NULL)
+	{
+		perror("malloc");
+		free(data->threads);
+		free(data);
+		exit (EXIT_FAILURE);
+	}
+}
+
 static void	init_philo(t_data *data)
 {
 	size_t	i;
@@ -55,6 +69,7 @@ static void	init_philo(t_data *data)
 	{
 		perror("malloc");
 		free(data->threads);
+		free(data->mutexes);
 		free(data);
 		exit (EXIT_FAILURE);
 	}
@@ -63,6 +78,8 @@ static void	init_philo(t_data *data)
 	{
 		data->philo[i].id = i;
 		data->philo[i].data = data;
+		data->philo[i].left = &(data->mutexes[i]);
+		data->philo[i].right = &(data->mutexes[(i + 1) % data->num_philo]); 
 		i++;
 	}
 }

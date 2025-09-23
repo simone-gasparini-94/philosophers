@@ -6,6 +6,7 @@ OBJ_DIR		=	build
 SRCS		=	args.c							\
 				init.c							\
 				main.c							\
+				mutexes.c						\
 				routine.c						\
 				threads.c						\
 				utils.c							
