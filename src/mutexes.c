@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 16:59:28 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/09/24 13:04:50 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/09/24 13:15:55 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,10 @@ void	lock_mutexes(t_philo *philo,
 	print_log(philo, FORK);
 	pthread_mutex_lock(second);
 	print_log(philo, FORK);
+}
+
+void	unlock_mutexes(t_philo *philo)
+{
+	pthread_mutex_unlock(philo->left);
+	pthread_mutex_unlock(philo->right);
 }
