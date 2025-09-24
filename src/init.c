@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:44:43 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/09/23 17:45:06 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/09/24 12:15:30 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include "data.h"
 #include "utils.h"
+#include "time.h"
 
 static void init_threads(t_data *data);
 static void	init_mutexes(t_data *data);
@@ -34,6 +35,7 @@ t_data	*init(char **argv)
 	init_threads(data);
 	init_mutexes(data);
 	init_philo(data);
+	data->initial_time_ms = get_initial_time();
 	return (data);
 }
 

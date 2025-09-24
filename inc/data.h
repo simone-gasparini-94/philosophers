@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:33:44 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/09/23 16:48:02 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/09/24 09:30:39 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_data
 	size_t			time_to_eat_ms;
 	size_t			time_to_sleep_ms;
 	size_t			num_times_philo_must_eat;
+	size_t			initial_time_ms;
 }	t_data;
 
 #endif

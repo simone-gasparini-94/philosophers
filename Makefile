@@ -9,6 +9,7 @@ SRCS		=	args.c							\
 				mutexes.c						\
 				routine.c						\
 				threads.c						\
+				time.c							\
 				utils.c							
 SRC_FILES	=	$(addprefix $(SRC_DIR)/, $(SRCS))
 OBJS		=	$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_FILES))
