@@ -7,6 +7,7 @@ SRCS		=	args.c							\
 				init.c							\
 				main.c							\
 				mutexes.c						\
+				print.c							\
 				routine.c						\
 				threads.c						\
 				time.c							\

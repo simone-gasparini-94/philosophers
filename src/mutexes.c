@@ -6,13 +6,14 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 16:59:28 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/09/24 12:49:02 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/09/24 13:04:50 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <pthread.h>
 #include "data.h"
+#include "print.h"
 
 void	init_mutexes(t_data *data)
 {
@@ -42,9 +43,7 @@ void	lock_mutexes(t_philo *philo,
 		pthread_mutex_t *first, pthread_mutex_t *second)
 {
 	pthread_mutex_lock(first);
-	printf("%zu %zu has taken a fork\n",
-			get_curr_time(philo->data), philo->id);
+	print_log(philo, FORK);
 	pthread_mutex_lock(second);
-	printf("%zu %zu has taken a fork\n",
-			get_curr_time(philo->data), philo->id);
+	print_log(philo, FORK);
 }
