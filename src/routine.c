@@ -6,19 +6,20 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 17:34:34 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/09/22 17:36:37 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/09/24 12:28:30 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <sys/types.h>
 #include "data.h"
+#include "time.h"
 
 void	*routine(void *arg)
 {
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	printf("Philosopher id is %zu\n", (size_t) philo->id);
+	printf("%zu %zu is thinking\n", get_current_time(philo->data), philo->id);
 	return (NULL);
 }
