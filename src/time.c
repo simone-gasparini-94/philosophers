@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 09:31:03 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/09/24 12:25:22 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/09/24 12:44:34 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ size_t	get_initial_time(void)
 	return (time_ms);
 }
 
-size_t	get_current_time(t_data *data)
+size_t	get_curr_time(t_data *data)
 {
 	struct timeval tv;
 	size_t	time_ms;
