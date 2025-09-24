@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:33:44 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/09/24 09:30:39 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/09/24 12:58:15 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,14 @@ typedef struct s_data
 	size_t			num_times_philo_must_eat;
 	size_t			initial_time_ms;
 }	t_data;
+
+typedef enum e_log
+{
+	FORK,
+	EAT,
+	THINK,
+	SLEEP,
+	DIE
+}
 
 #endif
