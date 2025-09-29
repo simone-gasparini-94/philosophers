@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:44:43 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/09/25 11:14:28 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/09/29 15:11:42 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ static void	init_philo(t_data *data)
 	while (i < data->num_philo)
 	{
 		data->philo[i].id = i;
+		data->philo[i].num_meals = 0;
 		data->philo[i].data = data;
 		data->philo[i].left = &(data->mutexes[i]);
 		data->philo[i].right = &(data->mutexes[(i + 1) % data->num_philo]); 
