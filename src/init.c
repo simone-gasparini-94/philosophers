@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:44:43 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/09/24 12:15:30 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/09/25 11:14:28 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_data	*init(char **argv)
 {
 	t_data *data;
 
+	data = NULL;
 	data = malloc(sizeof(*data));
 	if (data == NULL)
 		exit (EXIT_FAILURE);
@@ -32,6 +33,9 @@ t_data	*init(char **argv)
 	data->time_to_eat_ms = str_to_num(argv[3]);
 	data->time_to_sleep_ms = str_to_num(argv[4]);
 	data->num_times_philo_must_eat = str_to_num(argv[5]);
+	data->philo = NULL;
+	data->threads = NULL;
+	data->mutexes = NULL;
 	init_threads(data);
 	init_mutexes(data);
 	init_philo(data);
