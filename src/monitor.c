@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/16 12:35:35 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/01 11:55:14 by sgaspari         ###   ########.fr       */
+/*   Created: 2025/10/01 11:59:44 by sgaspari          #+#    #+#             */
+/*   Updated: 2025/10/01 12:03:20 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <sys/types.h>
+#include "monitor.h"
 
-size_t str_to_num(char *s)
+void	*monitor(void *arg)
 {
-	size_t	num;
-	size_t	i;
-
-	num = 0;
-	if (s == NULL)
-		return (0);
-	i = 0;
-	while (s[i] != '\0')
-	{
-		num = (num * 10) + (s[i] - '0');
-		i++;
-	}
-	return (num);
+	(void)arg;
+	return (NULL);
 }

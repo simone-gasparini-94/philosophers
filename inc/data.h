@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:33:44 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/09/29 15:11:03 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/01 11:54:43 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <sys/types.h>
 # include <pthread.h>
+# include <stdbool.h>
 
 typedef struct s_data t_data;
 
@@ -31,6 +32,7 @@ typedef struct s_data
 {
 	t_philo			*philo;
 	pthread_t		*threads;
+	pthread_t		monitor_thread;
 	pthread_mutex_t	*mutexes;
 	pthread_mutex_t	log_mutex;
 	size_t			num_philo;
@@ -39,6 +41,9 @@ typedef struct s_data
 	size_t			time_to_sleep_ms;
 	size_t			num_times_philo_must_eat;
 	size_t			initial_time_ms;
+	size_t			num_philo_fed;
+	bool			num_meals_active;
+	bool			end;
 }	t_data;
 
 typedef enum e_log

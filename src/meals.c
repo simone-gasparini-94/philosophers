@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   meals.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/16 12:35:35 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/01 11:55:14 by sgaspari         ###   ########.fr       */
+/*   Created: 2025/10/01 11:24:36 by sgaspari          #+#    #+#             */
+/*   Updated: 2025/10/01 11:58:59 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <sys/types.h>
+#include "data.h"
+#include "monitor.h"
 
-size_t str_to_num(char *s)
+static void	update_fed_counter(t_data *data);
+
+void	update_meals_counter(t_philo *philo)
 {
-	size_t	num;
-	size_t	i;
+	philo->num_meals++;
+	if (philo->num_meals >= philo->data->num_times_philo_must_eat)
+		update_fed_counter(philo->data);
+}
 
-	num = 0;
-	if (s == NULL)
-		return (0);
-	i = 0;
-	while (s[i] != '\0')
-	{
-		num = (num * 10) + (s[i] - '0');
-		i++;
-	}
-	return (num);
+static void	update_fed_counter(t_data *data)
+{
+	data->num_philo_fed++;
+	if (data->num_philo_fed >= data->num_philo)
+		enable_end(data);
 }

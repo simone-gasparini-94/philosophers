@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:44:43 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/09/29 15:11:42 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/01 12:06:18 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "utils.h"
 #include "time.h"
 
+static void	parse_argv(t_data *data, char **argv);
 static void init_threads(t_data *data);
 static void	init_mutexes(t_data *data);
 static void	init_philo(t_data *data);
@@ -28,11 +29,9 @@ t_data	*init(char **argv)
 	data = malloc(sizeof(*data));
 	if (data == NULL)
 		exit (EXIT_FAILURE);
-	data->num_philo = str_to_num(argv[1]);
-	data->time_to_die_ms = str_to_num(argv[2]);
-	data->time_to_eat_ms = str_to_num(argv[3]);
-	data->time_to_sleep_ms = str_to_num(argv[4]);
-	data->num_times_philo_must_eat = str_to_num(argv[5]);
+	parse_argv(data, argv);
+	data->num_philo_fed = 0;
+	data->end = false;
 	data->philo = NULL;
 	data->threads = NULL;
 	data->mutexes = NULL;
@@ -41,6 +40,19 @@ t_data	*init(char **argv)
 	init_philo(data);
 	data->initial_time_ms = get_initial_time();
 	return (data);
+}
+
+static void	parse_argv(t_data *data, char **argv)
+{
+	data->num_philo = str_to_num(argv[1]);
+	data->time_to_die_ms = str_to_num(argv[2]);
+	data->time_to_eat_ms = str_to_num(argv[3]);
+	data->time_to_sleep_ms = str_to_num(argv[4]);
+	data->num_times_philo_must_eat = str_to_num(argv[5]);
+	if (argv[5] == NULL)
+		data->num_meals_active = false;
+	else
+		data->num_meals_active = true;
 }
 
 static void init_threads(t_data *data)

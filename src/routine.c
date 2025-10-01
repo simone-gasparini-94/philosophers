@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 17:34:34 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/09/29 15:09:04 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/01 11:59:22 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include "data.h"
+#include "meals.h"
 #include "print.h"
 #include "time.h"
 #include "mutexes.h"
@@ -45,6 +46,8 @@ void	*routine(void *arg)
 static void	philo_eat(t_philo *philo)
 {
 	print_log(philo, EAT);
+	if (philo->data->num_meals_active == true)
+		update_meals_counter(philo);
 	usleep(philo->data->time_to_eat_ms * 1000);
 }
 

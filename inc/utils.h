@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:02 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/09/16 13:33:34 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/01 11:29:14 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include <sys/types.h>
 
-size_t	str_to_num(char *s);
+ssize_t	str_to_num(char *s);
 
 #endif
