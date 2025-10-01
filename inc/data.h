@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:33:44 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/01 12:22:20 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/01 12:44:19 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_philo
 	pthread_mutex_t	*right;
 	size_t			id;
 	size_t			num_meals;
+	size_t			time_last_meal_ms;
 }	t_philo;
 
 typedef struct s_data

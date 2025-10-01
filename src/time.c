@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 09:31:03 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/09/24 12:44:34 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/01 12:53:20 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,9 @@ size_t	get_curr_time(t_data *data)
 	}
 	time_ms = (tv.tv_sec * 1000) + (tv.tv_usec / 1000) - data->initial_time_ms;
 	return (time_ms);
+}
+
+void	update_time_last_meal(t_philo *philo)
+{
+	philo->time_last_meal_ms = get_curr_time(philo->data);
 }
