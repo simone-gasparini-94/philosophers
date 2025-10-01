@@ -6,13 +6,14 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:44:43 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/01 12:06:18 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/01 12:40:30 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "data.h"
+#include "end.h"
 #include "utils.h"
 #include "time.h"
 
@@ -29,9 +30,9 @@ t_data	*init(char **argv)
 	data = malloc(sizeof(*data));
 	if (data == NULL)
 		exit (EXIT_FAILURE);
-	parse_argv(data, argv);
-	data->num_philo_fed = 0;
 	data->end = false;
+	data->num_philo_fed = 0;
+	parse_argv(data, argv);
 	data->philo = NULL;
 	data->threads = NULL;
 	data->mutexes = NULL;
@@ -52,7 +53,11 @@ static void	parse_argv(t_data *data, char **argv)
 	if (argv[5] == NULL)
 		data->num_meals_active = false;
 	else
+	{
 		data->num_meals_active = true;
+		if (data->num_times_philo_must_eat == 0)
+			enable_end(data);
+	}
 }
 
 static void init_threads(t_data *data)
