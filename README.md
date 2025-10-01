@@ -12,3 +12,12 @@ This starts a simulation with:
 - Eating takes 200ms
 - Sleeping takes 200ms
 - Each philosopher must eat 10 times
+
+`./philo 3 1000 300 300`
+
+This starts a simulation with:
+- 3 philosophers
+- Each philosophers must eat every 1000ms
+- Eating takes 300ms
+- Sleeping takes 300ms
+- The number of time each philosopher should eat is not specified
