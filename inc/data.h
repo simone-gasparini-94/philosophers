@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:33:44 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/01 11:54:43 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/01 12:22:20 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_data
 	pthread_t		monitor_thread;
 	pthread_mutex_t	*mutexes;
 	pthread_mutex_t	log_mutex;
+	pthread_mutex_t	end_mutex;
 	size_t			num_philo;
 	size_t			time_to_die_ms;
 	size_t			time_to_eat_ms;

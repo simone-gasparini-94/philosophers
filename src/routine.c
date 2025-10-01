@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 17:34:34 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/01 11:59:22 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/01 12:30:33 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include "data.h"
+#include "end.h"
 #include "meals.h"
 #include "print.h"
 #include "time.h"
@@ -31,6 +32,8 @@ void	*routine(void *arg)
 	philo = (t_philo *)arg;
 	while (1)
 	{
+		if (is_flag_enabled(philo->data) == true)
+			break ;
 		if (philo->id % 2 == 0)
 			lock_mutexes(philo, philo->left, philo->right);
 		else

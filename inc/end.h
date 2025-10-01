@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   meals.c                                            :+:      :+:    :+:   */
+/*   end.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/01 11:24:36 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/01 12:32:37 by sgaspari         ###   ########.fr       */
+/*   Created: 2025/10/01 12:31:12 by sgaspari          #+#    #+#             */
+/*   Updated: 2025/10/01 12:31:48 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "data.h"
-#include "end.h"
+#ifndef END_H 
+# define END_H
 
-static void	update_fed_counter(t_data *data);
+# include <stdbool.h>
 
-void	update_meals_counter(t_philo *philo)
-{
-	philo->num_meals++;
-	if (philo->num_meals >= philo->data->num_times_philo_must_eat)
-		update_fed_counter(philo->data);
-}
+typedef struct s_data t_data;
 
-static void	update_fed_counter(t_data *data)
-{
-	data->num_philo_fed++;
-	if (data->num_philo_fed >= data->num_philo)
-		enable_end(data);
-}
+void	enable_end(t_data *data);
+bool	is_flag_enabled(t_data *data);
+
+#endif
