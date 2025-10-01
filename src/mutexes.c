@@ -6,13 +6,15 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 16:59:28 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/01 12:22:47 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/01 14:15:58 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <pthread.h>
+#include "end.h"
 #include "data.h"
+#include "mutexes.h"
 #include "print.h"
 
 void	init_mutexes(t_data *data)
@@ -43,13 +45,34 @@ void	destroy_mutexes(t_data *data)
 	pthread_mutex_destroy(&data->end_mutex);
 }
 
-void	lock_mutexes(t_philo *philo,
+int		lock_mutexes_asymettrically(t_philo *philo)
+{
+		if (philo->id % 2 == 0)
+		{
+			if (lock_mutexes(philo, philo->left, philo->right) == 1)
+				return (1);
+		}
+		else
+		{
+			if (lock_mutexes(philo, philo->right, philo->left) == 1)
+				return (1);
+		}
+		return (0);
+}
+
+int		lock_mutexes(t_philo *philo,
 		pthread_mutex_t *first, pthread_mutex_t *second)
 {
 	pthread_mutex_lock(first);
 	print_log(philo, FORK);
+	if (is_flag_enabled(philo->data) == true)
+	{
+		pthread_mutex_unlock(first);
+		return (1);
+	}
 	pthread_mutex_lock(second);
 	print_log(philo, FORK);
+	return (0);
 }
 
 void	unlock_mutexes(t_philo *philo)
