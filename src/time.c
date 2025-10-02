@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 09:31:03 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/01 12:53:20 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/02 10:14:08 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@ size_t	get_curr_time(t_data *data)
 
 void	update_time_last_meal(t_philo *philo)
 {
+	pthread_mutex_lock(&philo->data->last_meal_mutex);
 	philo->time_last_meal_ms = get_curr_time(philo->data);
+	pthread_mutex_unlock(&philo->data->last_meal_mutex);
 }

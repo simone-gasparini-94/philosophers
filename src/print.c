@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 12:53:11 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/09/29 15:05:10 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/02 10:03:54 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ void	print_log(t_philo *philo, t_log log)
 		printf("%zu %zu is thinking\n",
 				get_curr_time(philo->data), philo->id);
 	if (log == DIE)
+	{
 		printf("%zu %zu died\n",
 				get_curr_time(philo->data), philo->id);
+		printf("his last meal was at %zu\n", philo->time_last_meal_ms);
+	}
 	pthread_mutex_unlock(&(philo->data->log_mutex));
 }

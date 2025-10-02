@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 16:59:28 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/01 14:15:58 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/02 10:11:13 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	init_mutexes(t_data *data)
 		i++;
 	}
 	pthread_mutex_init(&data->log_mutex, NULL);
+	pthread_mutex_init(&data->last_meal_mutex, NULL);
 	pthread_mutex_init(&data->end_mutex, NULL);
 }
 
@@ -42,6 +43,7 @@ void	destroy_mutexes(t_data *data)
 		i++;
 	}
 	pthread_mutex_destroy(&data->log_mutex);
+	pthread_mutex_destroy(&data->last_meal_mutex);
 	pthread_mutex_destroy(&data->end_mutex);
 }
 
