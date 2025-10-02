@@ -6,13 +6,14 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 11:59:44 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/02 10:17:01 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/02 11:04:00 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "data.h"
 #include "end.h"
 #include "monitor.h"
@@ -42,6 +43,7 @@ void	*monitor(void *arg)
 			}
 			i++;
 		}
+		usleep(1000);
 	}
 	return (NULL);
 }

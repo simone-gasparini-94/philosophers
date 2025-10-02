@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 11:24:36 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/01 12:32:37 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/02 10:28:08 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ void	update_meals_counter(t_philo *philo)
 
 static void	update_fed_counter(t_data *data)
 {
+	pthread_mutex_lock(&data->num_philo_fed_mutex);
 	data->num_philo_fed++;
 	if (data->num_philo_fed >= data->num_philo)
 		enable_end(data);
+	pthread_mutex_unlock(&data->num_philo_fed_mutex);
 }
