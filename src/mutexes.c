@@ -6,12 +6,13 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 16:59:28 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/06 17:20:51 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/06 18:38:25 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <pthread.h>
+#include <unistd.h>
 #include "end.h"
 #include "data.h"
 #include "mutexes.h"

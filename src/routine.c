@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 17:34:34 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/06 17:15:02 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/06 18:38:35 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,12 @@ void	handle_one_philo(t_philo *philo)
 
 static void	philo_eat(t_philo *philo)
 {
+	print_log(philo, EAT);
+	update_time_last_meal(philo);
 	if (philo->data->num_meals_active == true)
 		update_meals_counter(philo);
-	update_time_last_meal(philo);
-	print_log(philo, EAT);
 	usleep(philo->data->time_to_eat_ms * 1000);
+	update_time_last_meal(philo);
 }
 
 static void	philo_sleep(t_philo *philo)
