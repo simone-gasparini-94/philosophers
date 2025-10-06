@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:33:44 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/02 10:25:31 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/06 17:18:01 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_philo
 	t_data			*data;
 	pthread_mutex_t	*left;
 	pthread_mutex_t	*right;
+	pthread_mutex_t	last_meal_mutex;
 	size_t			id;
 	size_t			num_meals;
 	size_t			time_last_meal_ms;
@@ -36,7 +37,6 @@ typedef struct s_data
 	pthread_t		monitor_thread;
 	pthread_mutex_t	*mutexes;
 	pthread_mutex_t	log_mutex;
-	pthread_mutex_t	last_meal_mutex;
 	pthread_mutex_t	num_philo_fed_mutex;
 	pthread_mutex_t	end_mutex;
 	size_t			num_philo;

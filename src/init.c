@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:44:43 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/01 12:40:30 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/06 17:20:01 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,8 @@ static void	init_philo(t_data *data)
 		data->philo[i].num_meals = 0;
 		data->philo[i].data = data;
 		data->philo[i].left = &(data->mutexes[i]);
-		data->philo[i].right = &(data->mutexes[(i + 1) % data->num_philo]); 
+		data->philo[i].right = &(data->mutexes[(i + 1) % data->num_philo]);
+		pthread_mutex_init(&data->philo[i].last_meal_mutex, NULL);
 		i++;
 	}
 }

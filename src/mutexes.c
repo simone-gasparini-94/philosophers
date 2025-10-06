@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 16:59:28 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/06 16:40:43 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/06 17:20:51 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	init_mutexes(t_data *data)
 		i++;
 	}
 	pthread_mutex_init(&data->log_mutex, NULL);
-	pthread_mutex_init(&data->last_meal_mutex, NULL);
 	pthread_mutex_init(&data->num_philo_fed_mutex, NULL);
 	pthread_mutex_init(&data->end_mutex, NULL);
 }
@@ -41,10 +40,10 @@ void	destroy_mutexes(t_data *data)
 	while (i < data->num_philo)
 	{
 		pthread_mutex_destroy(&data->mutexes[i]);
+		pthread_mutex_destroy(&data->philo[i].last_meal_mutex);
 		i++;
 	}
 	pthread_mutex_destroy(&data->log_mutex);
-	pthread_mutex_destroy(&data->last_meal_mutex);
 	pthread_mutex_destroy(&data->num_philo_fed_mutex);
 	pthread_mutex_destroy(&data->end_mutex);
 }

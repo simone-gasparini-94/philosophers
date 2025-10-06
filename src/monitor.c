@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 11:59:44 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/06 16:42:51 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/06 17:23:12 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	*monitor(void *arg)
 		}
 		if (is_flag_enabled(data) == true)
 			break ;
-		usleep(100);
 	}
 	return (NULL);
 }
@@ -53,9 +52,9 @@ static bool	is_philo_starved(t_data *data, t_philo *philo)
 	bool	starved;
 	size_t	curr_time;
 
-	pthread_mutex_lock(&data->last_meal_mutex);
+	pthread_mutex_lock(&philo->last_meal_mutex);
 	curr_time = get_curr_time(data);
 	starved = (curr_time - philo->time_last_meal_ms > data->time_to_die_ms);
-	pthread_mutex_unlock(&data->last_meal_mutex);
+	pthread_mutex_unlock(&philo->last_meal_mutex);
 	return (starved);
 }
