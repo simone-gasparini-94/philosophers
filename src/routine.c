@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 17:34:34 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/06 16:00:48 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/06 16:40:54 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,10 @@
 #include "time.h"
 #include "mutexes.h"
 
-#define STEPS 10
-
 static void	handle_one_philo(t_philo *philo);
-static int	philo_eat(t_philo *philo);
-static int	philo_sleep(t_philo *philo);
-static int	philo_think(t_philo *philo);
+static void	philo_eat(t_philo *philo);
+static void	philo_sleep(t_philo *philo);
+static void	philo_think(t_philo *philo);
 
 void	*routine(void *arg)
 {
@@ -40,17 +38,12 @@ void	*routine(void *arg)
 			handle_one_philo(philo);
 			break ;
 		}
-		if (lock_mutexes_asymettrically(philo) == 1)
-			break ;
-		if (philo_eat(philo) == 1)
-		{
-			unlock_mutexes(philo);
-			break ;
-		}
+		lock_mutexes_asymettrically(philo);
+		philo_eat(philo);
 		unlock_mutexes(philo);
-		if (philo_sleep(philo) == 1)
-			break ;
-		if (philo_think(philo) == 1)
+		philo_sleep(philo);
+		philo_think(philo);
+		if (is_flag_enabled(philo->data) == true)
 			break ;
 	}
 	return (NULL);
@@ -71,54 +64,22 @@ void	handle_one_philo(t_philo *philo)
 	}
 }
 
-static int	philo_eat(t_philo *philo)
+static void	philo_eat(t_philo *philo)
 {
-	size_t	i;
-
-	if (is_flag_enabled(philo->data) == true)
-		return (1);
 	print_log(philo, EAT);
 	if (philo->data->num_meals_active == true)
 		update_meals_counter(philo);
 	update_time_last_meal(philo);
-	i = 0;
-	while (i < STEPS)
-	{
-		usleep(philo->data->time_to_eat_ms * 1000 / STEPS);
-		if (is_flag_enabled(philo->data) == true)
-			return (1);
-		i++;
-	}
-	update_time_last_meal(philo);
-	if (is_flag_enabled(philo->data) == true)
-		return (1);
-	return (0);
+	usleep(philo->data->time_to_eat_ms * 1000);
 }
 
-static int	philo_sleep(t_philo *philo)
+static void	philo_sleep(t_philo *philo)
 {
-	size_t	i;
-
-	if (is_flag_enabled(philo->data) == true)
-		return (1);
 	print_log(philo, SLEEP);
-	i = 0;
-	while (i < STEPS)
-	{
-		usleep(philo->data->time_to_sleep_ms * 1000 / STEPS);
-		if (is_flag_enabled(philo->data) == true)
-			return (1);
-		i++;
-	}
-	if (is_flag_enabled(philo->data) == true)
-		return (1);
-	return (0);
+	usleep(philo->data->time_to_sleep_ms * 1000);
 }
 
-static int	philo_think(t_philo *philo)
+static void	philo_think(t_philo *philo)
 {
 	print_log(philo, THINK);
-	if (is_flag_enabled(philo->data) == true)
-		return (1);
-	return (0);
 }
