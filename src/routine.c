@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 17:34:34 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/02 11:19:43 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/06 13:12:38 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include "time.h"
 #include "mutexes.h"
 
+static void	handle_one_philo(t_philo *philo);
 static int	philo_eat(t_philo *philo);
 static int	philo_sleep(t_philo *philo);
 static int	philo_think(t_philo *philo);
@@ -32,6 +33,11 @@ void	*routine(void *arg)
 	philo = (t_philo *)arg;
 	while (1)
 	{
+		if (philo->data->num_philo == 1)
+		{
+			handle_one_philo(philo);
+			break ;
+		}
 		if (is_flag_enabled(philo->data) == true)
 			break ;
 		if (lock_mutexes_asymettrically(philo) == 1)
@@ -48,6 +54,20 @@ void	*routine(void *arg)
 			break ;
 	}
 	return (NULL);
+}
+
+void	handle_one_philo(t_philo *philo)
+{
+	pthread_mutex_lock(philo->left);
+	print_log(philo, FORK);
+	while (1)
+	{
+		if (is_flag_enabled(philo->data) == true)
+		{
+			pthread_mutex_unlock(philo->left);
+			return ;
+		}
+	}
 }
 
 static int	philo_eat(t_philo *philo)
