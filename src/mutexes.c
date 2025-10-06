@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 16:59:28 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/02 11:19:16 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/06 15:02:46 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ int		lock_mutexes_asymettrically(t_philo *philo)
 int		lock_mutexes(t_philo *philo,
 		pthread_mutex_t *first, pthread_mutex_t *second)
 {
+	if (is_flag_enabled(philo->data) == true)
+		return (1);
 	pthread_mutex_lock(first);
 	print_log(philo, FORK);
 	if (is_flag_enabled(philo->data) == true)

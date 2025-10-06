@@ -6,13 +6,14 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 17:38:23 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/01 12:00:36 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/06 15:06:19 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "data.h"
 #include "monitor.h"
 #include "routine.h"
