@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 16:59:28 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/06 18:38:25 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/07 11:12:33 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	init_mutexes(t_data *data)
 	}
 	pthread_mutex_init(&data->log_mutex, NULL);
 	pthread_mutex_init(&data->num_philo_fed_mutex, NULL);
+	pthread_mutex_init(&data->start_mutex, NULL);
 	pthread_mutex_init(&data->end_mutex, NULL);
 }
 
@@ -46,15 +47,16 @@ void	destroy_mutexes(t_data *data)
 	}
 	pthread_mutex_destroy(&data->log_mutex);
 	pthread_mutex_destroy(&data->num_philo_fed_mutex);
+	pthread_mutex_destroy(&data->start_mutex);
 	pthread_mutex_destroy(&data->end_mutex);
 }
 
 void	lock_mutexes_asymettrically(t_philo *philo)
 {
-		if (philo->id % 2 == 0)
-			lock_mutexes(philo, philo->left, philo->right);
-		else
-			lock_mutexes(philo, philo->right, philo->left);
+	if (philo->id % 2 == 0)
+		lock_mutexes(philo, philo->left, philo->right);
+	else
+		lock_mutexes(philo, philo->right, philo->left);
 }
 
 void	lock_mutexes(t_philo *philo,

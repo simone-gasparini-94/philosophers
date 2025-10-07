@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 11:59:44 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/07 10:10:39 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/07 11:12:59 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static bool	is_philo_starved(size_t curr_time, t_data *data, t_philo *philo);
 
 void	*monitor(void *arg)
 {
-	t_data *data;
+	t_data	*data;
 	size_t	curr_time;
 	size_t	i;
 

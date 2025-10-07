@@ -6,14 +6,14 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 11:07:17 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/09/25 11:11:06 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/07 11:13:35 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "clean.h"
 
-void	clean(data)
+void	clean(t_data *data)
 {
 	if (data->threads != NULL)
 		free(data->threads);

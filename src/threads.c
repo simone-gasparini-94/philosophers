@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 17:38:23 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/06 15:06:19 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/07 11:13:52 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	create_threads(t_data *data)
 	while (i < data->num_philo)
 	{
 		if (pthread_create(&(data->threads[i]), NULL,
-					routine, &(data->philo[i])) != 0)
+				routine, &(data->philo[i])) != 0)
 		{
 			perror("pthread_create");
 			free(data->threads);

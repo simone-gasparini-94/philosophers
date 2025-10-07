@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:44:43 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/06 18:16:05 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/07 11:11:40 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 #include "time.h"
 
 static void	parse_argv(t_data *data, char **argv);
-static void init_threads(t_data *data);
+static void	init_threads(t_data *data);
 static void	init_mutexes(t_data *data);
 static void	init_philo(t_data *data);
 
 t_data	*init(char **argv)
 {
-	t_data *data;
+	t_data	*data;
 
 	data = NULL;
 	data = malloc(sizeof(*data));
@@ -60,7 +60,7 @@ static void	parse_argv(t_data *data, char **argv)
 	}
 }
 
-static void init_threads(t_data *data)
+static void	init_threads(t_data *data)
 {
 	data->threads = malloc(sizeof(pthread_t) * data->num_philo);
 	if (data->threads == NULL)

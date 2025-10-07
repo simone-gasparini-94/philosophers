@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 16:42:21 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/06 14:03:09 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/07 11:07:47 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 int	main(int argc, char *argv[])
 {
-	t_data *data;
+	t_data	*data;
 
 	check_args(argc, argv);
 	data = init(argv);

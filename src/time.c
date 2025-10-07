@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 09:31:03 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/06 18:16:54 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/07 11:12:12 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 size_t	get_initial_time(void)
 {
-	struct timeval tv;
-	size_t	time_ms;
+	struct timeval	tv;
+	size_t			time_ms;
 
 	if (gettimeofday(&tv, NULL) == -1)
 	{
@@ -31,8 +31,8 @@ size_t	get_initial_time(void)
 
 size_t	get_curr_time(t_data *data)
 {
-	struct timeval tv;
-	size_t	time_ms;
+	struct timeval	tv;
+	size_t			time_ms;
 
 	if (gettimeofday(&tv, NULL) == -1)
 	{

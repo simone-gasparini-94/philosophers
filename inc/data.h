@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:33:44 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/06 18:16:15 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/07 11:08:43 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <pthread.h>
 # include <stdbool.h>
 
-typedef struct s_data t_data;
+typedef struct s_data	t_data;
 
 typedef struct s_philo
 {
@@ -38,6 +38,7 @@ typedef struct s_data
 	pthread_mutex_t	*mutexes;
 	pthread_mutex_t	log_mutex;
 	pthread_mutex_t	num_philo_fed_mutex;
+	pthread_mutex_t	start_mutex;
 	pthread_mutex_t	end_mutex;
 	size_t			num_philo;
 	size_t			time_to_die_ms;
