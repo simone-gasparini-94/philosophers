@@ -5,6 +5,7 @@ SRC_DIR		=	src
 OBJ_DIR		=	build
 SRCS		=	args.c							\
 				init.c							\
+				destroy.c						\
 				end.c							\
 				main.c							\
 				meals.c							\

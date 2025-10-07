@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/22 16:42:21 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/07 11:40:40 by sgaspari         ###   ########.fr       */
+/*   Created: 2025/10/07 11:37:55 by sgaspari          #+#    #+#             */
+/*   Updated: 2025/10/07 11:39:22 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <pthread.h>
-#include "args.h"
 #include "data.h"
-#include "destroy.h"
-#include "init.h"
-#include "mutexes.h"
-#include "threads.h"
+#include <stdlib.h>
 
-int	main(int argc, char *argv[])
+void	destroy(t_data *data)
 {
-	t_data	*data;
-
-	check_args(argc, argv);
-	data = init(argv);
-	init_mutexes(data);
-	create_threads(data);
-	join_threads(data);
-	destroy_mutexes(data);
-	destroy(data);
-	return (0);
+	free(data->threads);
+	free(data->mutexes);
+	free(data->philo);
+	free(data);
 }

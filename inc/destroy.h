@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   destroy.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/22 16:42:21 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/07 11:40:40 by sgaspari         ###   ########.fr       */
+/*   Created: 2025/10/07 11:39:38 by sgaspari          #+#    #+#             */
+/*   Updated: 2025/10/07 11:40:09 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <pthread.h>
-#include "args.h"
-#include "data.h"
-#include "destroy.h"
-#include "init.h"
-#include "mutexes.h"
-#include "threads.h"
+#ifndef DESTROY_H
+# define DESTROY_H
 
-int	main(int argc, char *argv[])
-{
-	t_data	*data;
+typedef struct s_data	t_data;
 
-	check_args(argc, argv);
-	data = init(argv);
-	init_mutexes(data);
-	create_threads(data);
-	join_threads(data);
-	destroy_mutexes(data);
-	destroy(data);
-	return (0);
-}
+void	destroy(t_data *data);
+
+#endif
