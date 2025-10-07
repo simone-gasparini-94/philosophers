@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 11:59:44 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/06 18:44:13 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/07 10:10:39 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	*monitor(void *arg)
 		}
 		if (is_flag_enabled(data) == true)
 			break ;
-		usleep(100);
 	}
 	return (NULL);
 }

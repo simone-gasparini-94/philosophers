@@ -22,7 +22,7 @@ NAME		=	philo
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-	@$(CC) $(OBJS) -o $(NAME)
+	@$(CC) $(OBJS) -o $(NAME) 
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)

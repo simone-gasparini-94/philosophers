@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 17:34:34 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/06 18:38:35 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/07 10:14:00 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 #include "print.h"
 #include "time.h"
 #include "mutexes.h"
+
+#define STEPS 50
 
 static void	handle_one_philo(t_philo *philo);
 static void	philo_eat(t_philo *philo);
@@ -68,8 +70,9 @@ static void	philo_eat(t_philo *philo)
 	update_time_last_meal(philo);
 	if (philo->data->num_meals_active == true)
 		update_meals_counter(philo);
-	usleep(philo->data->time_to_eat_ms * 1000);
+	usleep(philo->data->time_to_eat_ms * 1000 / STEPS);
 	update_time_last_meal(philo);
+	usleep(philo->data->time_to_eat_ms * 1000 / STEPS * (STEPS - 1));
 }
 
 static void	philo_sleep(t_philo *philo)
