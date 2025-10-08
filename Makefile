@@ -12,6 +12,7 @@ SRCS		=	args.c							\
 				monitor.c						\
 				mutexes.c						\
 				print.c							\
+				queue.c							\
 				routine.c						\
 				threads.c						\
 				time.c							\

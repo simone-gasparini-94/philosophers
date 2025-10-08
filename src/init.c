@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:44:43 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/07 11:49:45 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/08 15:28:49 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ t_data	*init(char **argv)
 	init_threads(data);
 	init_mutexes(data);
 	init_philo(data);
+	init_queue(data);
 	data->initial_time_ms = get_initial_time();
 	return (data);
 }
