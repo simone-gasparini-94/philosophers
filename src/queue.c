@@ -38,6 +38,21 @@ void	init_queue(t_data *data)
 	}
 }
 
+void	shift_queue(t_data *data)
+{
+	size_t	i;
+
+	pthread_mutex_lock(&(data->queue_mutex));
+	i = 0;
+	while(i < data->len_queue)
+	{
+		data->queue[i].id = (data->queue[i].id + 1) % data->num_philo;
+		data->queue[i].eat = false;
+		i++;
+	}
+	pthread_mutex_unlock(&(data->queue_mutex));
+}
+
 bool	is_philo_in_queue(t_philo *philo)
 {
 	size_t	i;
@@ -49,10 +64,30 @@ bool	is_philo_in_queue(t_philo *philo)
 		if (philo->id == philo->data->queue[i].id)
 		{
 			philo->data->queue[i].eat = true;
+			pthread_mutex_unlock(&(philo->data->queue_mutex));
 			return (true);
 		}
 		i++;
 	}
 	pthread_mutex_unlock(&(philo->data->queue_mutex));
 	return (false);
+}
+
+bool	is_queue_fed(t_philo *philo)
+{
+	size_t	i;
+
+	pthread_mutex_lock(&(philo->data->queue_mutex));
+	i = 0;
+	while (i < philo->data->len_queue)
+	{
+		if (philo->data->queue[i].eat == false)
+		{
+			pthread_mutex_unlock(&(philo->data->queue_mutex));
+			return (false);
+		}
+		i++;
+	}
+	pthread_mutex_unlock(&(philo->data->queue_mutex));
+	return (true);
 }

@@ -41,16 +41,22 @@ void	*routine(void *arg)
 			handle_one_philo(philo);
 			break ;
 		}
-		if (is_philo_in_queue(philo) == false)
-			usleep(100);
-		else
+		if (is_philo_in_queue(philo) == true)
 		{
 			lock_mutexes_asymettrically(philo);
 			philo_eat(philo);
 			unlock_mutexes(philo);
-			philo_sleep(philo);
-			philo_think(philo);
+			if (is_queue_fed(philo) == true)
+				shift_queue(philo->data);
 		}
+		else
+		{
+			usleep(1000);
+			continue;
+		}
+		philo_sleep(philo);
+		philo_think(philo);
+
 	}
 	return (NULL);
 }
