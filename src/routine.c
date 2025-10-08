@@ -16,6 +16,7 @@
 #include <unistd.h>
 #include "data.h"
 #include "end.h"
+#include "queue.h"
 #include "meals.h"
 #include "print.h"
 #include "time.h"

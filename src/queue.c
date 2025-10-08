@@ -10,12 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include <stdio.h>
 #include <stdbool.h>
 #include "data.h"
 
 void	init_queue(t_data *data)
 {
-	size_t	queue_len;
 	size_t	i;
 
 	data->len_queue = data->num_philo / 2;
@@ -29,7 +30,7 @@ void	init_queue(t_data *data)
 		free(data);
 	}
 	i = 0;
-	while (i < queue_len)
+	while (i < data->len_queue)
 	{
 		data->queue[i].id = i * 2;
 		data->queue[i].eat = false;
@@ -53,11 +54,3 @@ bool	is_philo_in_queue(t_philo *philo)
 	}
 	return (false);
 }
-
-bool	is_queue_fed(t_philo *philo)
-{
-
-}
-
-void	update_queue(
-

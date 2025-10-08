@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include "data.h"
 #include "end.h"
+#include "queue.h"
 #include "utils.h"
 #include "time.h"
 
