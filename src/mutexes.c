@@ -30,8 +30,8 @@ void	init_mutexes(t_data *data)
 	}
 	pthread_mutex_init(&data->log_mutex, NULL);
 	pthread_mutex_init(&data->num_philo_fed_mutex, NULL);
-	pthread_mutex_init(&data->start_mutex, NULL);
 	pthread_mutex_init(&data->end_mutex, NULL);
+	pthread_mutex_init(&data->queue_mutex, NULL);
 }
 
 void	destroy_mutexes(t_data *data)
@@ -47,8 +47,8 @@ void	destroy_mutexes(t_data *data)
 	}
 	pthread_mutex_destroy(&data->log_mutex);
 	pthread_mutex_destroy(&data->num_philo_fed_mutex);
-	pthread_mutex_destroy(&data->start_mutex);
 	pthread_mutex_destroy(&data->end_mutex);
+	pthread_mutex_destroy(&data->queue_mutex);
 }
 
 void	lock_mutexes_asymettrically(t_philo *philo)

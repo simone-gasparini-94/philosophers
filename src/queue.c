@@ -42,6 +42,7 @@ bool	is_philo_in_queue(t_philo *philo)
 {
 	size_t	i;
 
+	pthread_mutex_lock(&(philo->data->queue_mutex));
 	i = 0;
 	while (i < philo->data->len_queue)
 	{
@@ -52,5 +53,6 @@ bool	is_philo_in_queue(t_philo *philo)
 		}
 		i++;
 	}
+	pthread_mutex_unlock(&(philo->data->queue_mutex));
 	return (false);
 }

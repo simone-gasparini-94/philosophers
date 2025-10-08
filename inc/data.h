@@ -44,8 +44,8 @@ typedef struct s_data
 	pthread_mutex_t	*mutexes;
 	pthread_mutex_t	log_mutex;
 	pthread_mutex_t	num_philo_fed_mutex;
-	pthread_mutex_t	start_mutex;
 	pthread_mutex_t	end_mutex;
+	pthread_mutex_t	queue_mutex;
 	t_queue			*queue;
 	size_t			len_queue;
 	size_t			num_philo;
