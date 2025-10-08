@@ -15,8 +15,14 @@
 
 void	destroy(t_data *data)
 {
-	free(data->threads);
-	free(data->mutexes);
-	free(data->philo);
-	free(data);
+	if (data->threads)
+		free(data->threads);
+	if (data->mutexes)
+		free(data->mutexes);
+	if (data->philo)
+		free(data->philo);
+	if (data->queue)
+		free(data->queue);
+	if (data)
+		free(data);
 }
