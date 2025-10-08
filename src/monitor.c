@@ -45,6 +45,7 @@ void	*monitor(void *arg)
 		}
 		if (is_flag_enabled(data) == true)
 			break ;
+		usleep(1000);
 	}
 	return (NULL);
 }
