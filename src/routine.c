@@ -22,8 +22,6 @@
 #include "time.h"
 #include "mutexes.h"
 
-#define STEPS 50
-
 static void	handle_one_philo(t_philo *philo);
 static void	philo_eat(t_philo *philo);
 static void	philo_sleep(t_philo *philo);
@@ -82,9 +80,8 @@ static void	philo_eat(t_philo *philo)
 	update_time_last_meal(philo);
 	if (philo->data->num_meals_active == true)
 		update_meals_counter(philo);
-	usleep(philo->data->time_to_eat_ms * 1000 / STEPS);
 	update_time_last_meal(philo);
-	usleep(philo->data->time_to_eat_ms * 1000 / STEPS * (STEPS - 1));
+	usleep(philo->data->time_to_eat_ms * 1000);
 }
 
 static void	philo_sleep(t_philo *philo)
