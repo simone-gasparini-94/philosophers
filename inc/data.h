@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:33:44 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/08 15:28:04 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/08 16:27:31 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ typedef struct s_philo
 	size_t			time_last_meal_ms;
 }	t_philo;
 
+typedef struct s_queue
+{
+	size_t			id;
+	bool			eat;
+}	t_queue;
+
 typedef struct s_data
 {
 	t_philo			*philo;
@@ -40,7 +46,8 @@ typedef struct s_data
 	pthread_mutex_t	num_philo_fed_mutex;
 	pthread_mutex_t	start_mutex;
 	pthread_mutex_t	end_mutex;
-	size_t			*queue;
+	t_queue			*queue;
+	size_t			len_queue;
 	size_t			num_philo;
 	size_t			time_to_die_ms;
 	size_t			time_to_eat_ms;

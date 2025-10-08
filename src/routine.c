@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 17:34:34 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/08 15:11:41 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/08 16:20:24 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,16 @@ void	*routine(void *arg)
 			handle_one_philo(philo);
 			break ;
 		}
-		lock_mutexes_asymettrically(philo);
-		philo_eat(philo);
-		unlock_mutexes(philo);
-		philo_sleep(philo);
-		philo_think(philo);
+		if (is_philo_in_queue(philo) == false)
+			usleep(100);
+		else
+		{
+			lock_mutexes_asymettrically(philo);
+			philo_eat(philo);
+			unlock_mutexes(philo);
+			philo_sleep(philo);
+			philo_think(philo);
+		}
 	}
 	return (NULL);
 }
