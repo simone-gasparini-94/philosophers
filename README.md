@@ -1,5 +1,5 @@
 ## Description
-Simulation of the **Dining Philosophers problem** using `pthreads`.
+Simulation of the **Dining Philosophers problem** using `pthreads` (POSIX Threads).
 
 https://en.wikipedia.org/wiki/Dining_philosophers_problem
 
