@@ -41,6 +41,7 @@ typedef struct s_data
 	t_philo			*philo;
 	pthread_t		*threads;
 	pthread_t		monitor_thread;
+	pthread_t		queue_thread;
 	pthread_mutex_t	*mutexes;
 	pthread_mutex_t	log_mutex;
 	pthread_mutex_t	num_philo_fed_mutex;

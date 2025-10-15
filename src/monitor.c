@@ -44,11 +44,8 @@ void	*monitor(void *arg)
 			}
 			i++;
 		}
-		if (is_queue_fed(data) == true)
-			shift_queue(data);
 		if (is_flag_enabled(data) == true)
 			break ;
-		usleep(1000);
 	}
 	return (NULL);
 }

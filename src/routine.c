@@ -44,7 +44,6 @@ void	*routine(void *arg)
 			lock_and_eat(philo);
 		else
 		{
-			usleep(1000);
 			continue ;
 		}
 		philo_sleep(philo);
@@ -78,5 +77,4 @@ static void	philo_sleep(t_philo *philo)
 static void	philo_think(t_philo *philo)
 {
 	print_log(philo, THINK);
-	usleep(1000);
 }

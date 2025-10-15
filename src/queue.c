@@ -13,7 +13,25 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <unistd.h>
 #include "data.h"
+#include "end.h"
+#include "queue.h"
+
+void	*queue(void *arg)
+{
+	t_data *data;
+
+	data = (t_data *)arg;
+	while (1)
+	{
+		if (is_queue_fed(data) == true)
+			shift_queue(data);
+		if (is_flag_enabled(data) == true)
+			break ;
+	}
+	return (NULL);
+}
 
 void	init_queue(t_data *data)
 {
@@ -50,6 +68,7 @@ void	shift_queue(t_data *data)
 		data->queue[i].eat = false;
 		i++;
 	}
+	usleep(data->time_to_eat_ms * 1000);
 	pthread_mutex_unlock(&(data->queue_mutex));
 }
 
@@ -61,7 +80,8 @@ bool	is_philo_in_queue(t_philo *philo)
 	i = 0;
 	while (i < philo->data->len_queue)
 	{
-		if (philo->id == philo->data->queue[i].id)
+		if (philo->id == philo->data->queue[i].id
+				&& philo->data->queue[i].eat == false)
 		{
 			philo->data->queue[i].eat = true;
 			pthread_mutex_unlock(&(philo->data->queue_mutex));

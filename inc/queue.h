@@ -13,6 +13,7 @@
 #ifndef QUEUE_H
 # define QUEUE_H
 
+void	*queue(void *arg);
 void	init_queue(t_data *data);
 void	shift_queue(t_data *data);
 bool	is_philo_in_queue(t_philo *philo);
