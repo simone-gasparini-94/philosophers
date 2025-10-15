@@ -18,6 +18,7 @@
 #include "end.h"
 #include "monitor.h"
 #include "print.h"
+#include "queue.h"
 #include "time.h"
 
 static bool	is_philo_starved(size_t curr_time, t_data *data, t_philo *philo);
@@ -43,6 +44,8 @@ void	*monitor(void *arg)
 			}
 			i++;
 		}
+		if (is_queue_fed(data) == true)
+			shift_queue(data);
 		if (is_flag_enabled(data) == true)
 			break ;
 		usleep(1000);

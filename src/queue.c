@@ -73,21 +73,21 @@ bool	is_philo_in_queue(t_philo *philo)
 	return (false);
 }
 
-bool	is_queue_fed(t_philo *philo)
+bool	is_queue_fed(t_data *data)
 {
 	size_t	i;
 
-	pthread_mutex_lock(&(philo->data->queue_mutex));
+	pthread_mutex_lock(&(data->queue_mutex));
 	i = 0;
-	while (i < philo->data->len_queue)
+	while (i < data->len_queue)
 	{
-		if (philo->data->queue[i].eat == false)
+		if (data->queue[i].eat == false)
 		{
-			pthread_mutex_unlock(&(philo->data->queue_mutex));
+			pthread_mutex_unlock(&(data->queue_mutex));
 			return (false);
 		}
 		i++;
 	}
-	pthread_mutex_unlock(&(philo->data->queue_mutex));
+	pthread_mutex_unlock(&(data->queue_mutex));
 	return (true);
 }

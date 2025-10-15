@@ -58,8 +58,6 @@ static void	lock_and_eat(t_philo *philo)
 	lock_mutexes_asymettrically(philo);
 	philo_eat(philo);
 	unlock_mutexes(philo);
-	if (is_queue_fed(philo) == true)
-		shift_queue(philo->data);
 }
 
 static void	philo_eat(t_philo *philo)
