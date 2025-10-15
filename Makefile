@@ -11,6 +11,7 @@ SRCS		=	args.c							\
 				meals.c							\
 				monitor.c						\
 				mutexes.c						\
+				one_philo.c						\
 				print.c							\
 				queue.c							\
 				routine.c						\

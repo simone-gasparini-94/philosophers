@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 17:34:34 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/08 16:20:24 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/15 10:38:13 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@
 #include "queue.h"
 #include "meals.h"
 #include "print.h"
+#include "routine.h"
 #include "time.h"
 #include "mutexes.h"
 
-static void	handle_one_philo(t_philo *philo);
+static void	lock_and_eat(t_philo *philo);
 static void	philo_eat(t_philo *philo);
 static void	philo_sleep(t_philo *philo);
 static void	philo_think(t_philo *philo);
@@ -40,38 +41,25 @@ void	*routine(void *arg)
 			break ;
 		}
 		if (is_philo_in_queue(philo) == true)
-		{
-			lock_mutexes_asymettrically(philo);
-			philo_eat(philo);
-			unlock_mutexes(philo);
-			if (is_queue_fed(philo) == true)
-				shift_queue(philo->data);
-		}
+			lock_and_eat(philo);
 		else
 		{
 			usleep(1000);
-			continue;
+			continue ;
 		}
 		philo_sleep(philo);
 		philo_think(philo);
-
 	}
 	return (NULL);
 }
 
-void	handle_one_philo(t_philo *philo)
+static void	lock_and_eat(t_philo *philo)
 {
-	pthread_mutex_lock(philo->left);
-	print_log(philo, FORK);
-	while (1)
-	{
-		if (is_flag_enabled(philo->data) == true)
-		{
-			pthread_mutex_unlock(philo->left);
-			return ;
-		}
-		usleep(1000);
-	}
+	lock_mutexes_asymettrically(philo);
+	philo_eat(philo);
+	unlock_mutexes(philo);
+	if (is_queue_fed(philo) == true)
+		shift_queue(philo->data);
 }
 
 static void	philo_eat(t_philo *philo)

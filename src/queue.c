@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 15:31:26 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/08 16:28:54 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/15 10:20:03 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	shift_queue(t_data *data)
 
 	pthread_mutex_lock(&(data->queue_mutex));
 	i = 0;
-	while(i < data->len_queue)
+	while (i < data->len_queue)
 	{
 		data->queue[i].id = (data->queue[i].id + 1) % data->num_philo;
 		data->queue[i].eat = false;
