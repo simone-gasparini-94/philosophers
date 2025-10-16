@@ -1,7 +1,7 @@
 ## Description
 Simulation of the **Dining Philosophers problem** using `pthreads` (POSIX Threads).
 
-For an explanation of the Dining Philosophers problem, check the [Wikipedia page](https://en.wikipedia.org/wiki/Dining_philosophers_problem)
+For an explanation of the Dining Philosophers problem, check [Wikipedia ↗](https://en.wikipedia.org/wiki/Dining_philosophers_problem)
 
 ## How to run
 `./philo 5 800 200 200 10`
