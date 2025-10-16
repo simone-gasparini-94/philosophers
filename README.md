@@ -1,6 +1,8 @@
 ## Description
 Simulation of the **Dining Philosophers problem** using `pthreads` (POSIX Threads).
 
+For an explanation of the Dining Philosophers problem refer to:
+
 https://en.wikipedia.org/wiki/Dining_philosophers_problem
 
 ## How to run
