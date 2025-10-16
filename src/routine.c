@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 17:34:34 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/15 16:10:03 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/16 12:28:10 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	*routine(void *arg)
 			lock_and_eat(philo);
 		else
 		{
+			usleep(100);
 			continue ;
 		}
 		philo_sleep(philo);
@@ -77,4 +78,5 @@ static void	philo_sleep(t_philo *philo)
 static void	philo_think(t_philo *philo)
 {
 	print_log(philo, THINK);
+	usleep(100);
 }

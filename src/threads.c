@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 17:38:23 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/07 11:13:52 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/16 12:24:35 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	create_threads(t_data *data)
 		i++;
 	}
 	if (pthread_create(&data->monitor_thread, NULL, monitor, data) != 0
-			|| pthread_create(&data->queue_thread, NULL, queue, data) != 0)
+		|| pthread_create(&data->queue_thread, NULL, queue, data) != 0)
 	{
 		perror("pthread_create");
 		free(data->threads);
@@ -66,7 +66,7 @@ void	join_threads(t_data *data)
 		i++;
 	}
 	if (pthread_join(data->monitor_thread, NULL) != 0
-			|| pthread_join(data->queue_thread, NULL) != 0)
+		|| pthread_join(data->queue_thread, NULL) != 0)
 	{
 		perror("pthread_join");
 		free(data->threads);

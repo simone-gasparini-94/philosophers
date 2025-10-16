@@ -6,7 +6,7 @@
 /*   By: sgaspari <sgaspari@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 15:31:26 by sgaspari          #+#    #+#             */
-/*   Updated: 2025/10/15 10:20:03 by sgaspari         ###   ########.fr       */
+/*   Updated: 2025/10/16 12:26:37 by sgaspari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 void	*queue(void *arg)
 {
-	t_data *data;
+	t_data	*data;
 
 	data = (t_data *)arg;
 	while (1)
@@ -29,6 +29,7 @@ void	*queue(void *arg)
 			shift_queue(data);
 		if (is_flag_enabled(data) == true)
 			break ;
+		usleep(100);
 	}
 	return (NULL);
 }
@@ -81,7 +82,7 @@ bool	is_philo_in_queue(t_philo *philo)
 	while (i < philo->data->len_queue)
 	{
 		if (philo->id == philo->data->queue[i].id
-				&& philo->data->queue[i].eat == false)
+			&& philo->data->queue[i].eat == false)
 		{
 			philo->data->queue[i].eat = true;
 			pthread_mutex_unlock(&(philo->data->queue_mutex));
