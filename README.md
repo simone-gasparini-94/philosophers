@@ -1,7 +1,14 @@
 # philosophers
 
 ## Description
-Simulation of the [Dining Philosophers problem](https://en.wikipedia.org/wiki/Dining_philosophers_problem) using `pthreads` (POSIX Threads), which serves as an exercise for concurrency and deadlock prevention.
+Simulation of the **Dining Philosophers problem** using POSIX threads (`pthreads`) and mutexes:
+
+> N philosophers sit at a round table. Each one alternates between thinking, eating, and sleeping. Between each pair of philosophers lies a single fork, but eating requires two forks. Ensure no philosopher starves, without causing a deadlock.
+
+
+The program logs any state change of a philosopher in the format: `timestamp_in_ms <philosopher id> <state>`
+
+The simulation stops when either a philosopher die or the optional meal count is reached by all philosophers.
 
 ## How to run
 
