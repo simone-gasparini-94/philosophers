@@ -15,7 +15,7 @@ The simulation stops when either a philosopher die or the optional meal count is
 Clone this repository:
 
 ```bash
-git clone https://github.com/simone-gasparini-94/philosophers.git
+git clone https://github.com/s-gas/philosophers.git
 ```
 
 Change to the project directory:
